@@ -33,6 +33,11 @@ export default {
           ['0', '.', '=']
       ]
     }
+  },
+  methods: {
+    test(){
+      console.log(this.previous)
+    }
   }
 }
 </script>

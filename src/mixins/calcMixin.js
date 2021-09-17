@@ -1,4 +1,4 @@
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
     computed: {
@@ -6,7 +6,10 @@ export default {
 
         current: {
             get() { return this.getCurrent },
-            set(value) { this.setCurrent(value) }
+            set(value) {
+                this.$store.commit('setCurrent', value)
+                // this.$store.dispatch('setCurrent', value)
+            }
         },
         previous: {
             get() { return this.getPrevious },
@@ -23,7 +26,7 @@ export default {
     },
     methods: {
         ...mapMutations(['clearDisplay', 'setCurrent', 'setPrevious', 'setOperator', 'setClickedOperator']),
-
+        // ...mapActions([''])
         appendSymbol(number) {
             if(this.clickedOperator) {
                 this.clickedOperator = false;
